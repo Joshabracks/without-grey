@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c55d1pn0pou87"]
+
+[ext_resource type="Script" path="res://platform.gd" id="1_xwxur"]
+
+[node name="Platform" type="Polygon2D"]
+polygon = PackedVector2Array(0, 56, 64, 56, 64, 0, 0, 0)
+script = ExtResource("1_xwxur")
+cyan = true
+magenta = true
+yellow = true

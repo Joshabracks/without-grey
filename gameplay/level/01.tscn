@@ -1,0 +1,160 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2ntrrmpqd784"]
+
+[ext_resource type="PackedScene" uid="uid://c55d1pn0pou87" path="res://gameplay/platform/platform.tscn" id="1_51m4t"]
+[ext_resource type="PackedScene" uid="uid://dslw3dhokr8u1" path="res://gameplay/platform/platform_cyan.tscn" id="2_7jwgc"]
+[ext_resource type="PackedScene" uid="uid://dmo8lm38fe1fi" path="res://gameplay/platform/platform_yellow.tscn" id="3_ls8vg"]
+[ext_resource type="PackedScene" uid="uid://dsolrgep0twgr" path="res://gameplay/platform/platform_magenta.tscn" id="4_q0de7"]
+[ext_resource type="PackedScene" uid="uid://d3dtq6g2kcd8e" path="res://gameplay/platform/platform_green.tscn" id="5_sip1s"]
+
+[node name="01" type="Node2D"]
+
+[node name="Platform" parent="." instance=ExtResource("1_51m4t")]
+polygon = PackedVector2Array(0, 632, 64, 632, 64, 64, 1792, 64, 1792, 632, 1856, 632, 1856, 64, 1856, 0, 0, 0)
+
+[node name="Platform2" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(64, 192)
+polygon = PackedVector2Array(0, 56, 448, 56, 448, 0, 0, 0)
+
+[node name="Platform3" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(576, 192)
+polygon = PackedVector2Array(0, 56, 64, 56, 64, -128, 0, -128)
+
+[node name="Platform4" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(576, 320)
+polygon = PackedVector2Array(-448, 128, -384, 128, -384, 56, 64, 56, 64, 0, -448, 0)
+
+[node name="Platform5" parent="." instance=ExtResource("3_ls8vg")]
+position = Vector2(64, 512)
+
+[node name="Platform6" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(168, 512)
+polygon = PackedVector2Array(-40, 56, 152, 56, 152, -64, 88, -64, 88, 0, -40, 0)
+
+[node name="Platform7" parent="." instance=ExtResource("3_ls8vg")]
+position = Vector2(320, 448)
+polygon = PackedVector2Array(0, 120, 448, 120, 448, 0, 832, 0, 832, -72, 384, -72, 384, 56, 64, 56, 64, 0, 0, 0)
+
+[node name="Platform8" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(64, 64)
+polygon = PackedVector2Array(0, 128, 448, 128, 448, 184, 0, 184, 0, 448, 192, 448, 192, 384, 640, 384, 640, 312, 192, 312, 128, 312, 128, 384, 64, 384, 64, 256, 576, 256, 576, 184, 512, 184, 512, 0, 0, 0)
+
+[node name="Platform9" parent="." instance=ExtResource("3_ls8vg")]
+position = Vector2(640, 248)
+polygon = PackedVector2Array(0, 128, 64, 128, 64, 72, 448, 72, 448, -64, 384, -64, 320, -64, 256, -48, 256, 8, 192, 8, 192, -48, 256, -48, 320, -64, 320, -120, 384, -120, 384, -64, 448, -64, 448, -184, 384, -184, 320, -184, 192, -184, 0, -184)
+
+[node name="Platform10" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(704, 320)
+
+[node name="Platform11" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(832, 200)
+
+[node name="Platform12" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(960, 128)
+
+[node name="Platform13" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(768, 320)
+polygon = PackedVector2Array(0, 56, 384, 56, 384, 0, 384, -192, 320, -192, 320, 0, 0, 0)
+
+[node name="Platform14" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(1088, 64)
+polygon = PackedVector2Array(0, 64, 64, 64, 64, 312, 192, 312, 192, 512, 256, 568, 704, 568, 704, 512, 384, 512, 320, 512, 320, 448, 384, 448, 384, 384, 320, 384, 320, 320, 384, 320, 384, 256, 320, 256, 128, 256, 128, 0, 0, 0)
+
+[node name="Platform15" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(64, 568)
+polygon = PackedVector2Array(0, 64, 768, 64, 768, -56, 704, -56, 704, 0, 0, 0)
+
+[node name="Platform16" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(384, 448)
+polygon = PackedVector2Array(0, 56, 320, 56, 320, 0, 0, 0)
+
+[node name="Platform17" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(1152, 376)
+polygon = PackedVector2Array(-384, 136, -320, 136, -320, 256, 64, 256, 64, 200, -256, 200, -256, 136, 64, 136, 64, 0, 0, 0, 0, 72, -384, 72)
+
+[node name="Platform18" parent="." instance=ExtResource("3_ls8vg")]
+position = Vector2(896, 512)
+polygon = PackedVector2Array(0, 64, 320, 64, 320, 120, 384, 120, 448, 120, 448, 64, 384, 64, 384, -136, 320, -136, 320, 0, 0, 0)
+
+[node name="Platform19" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(1472, 456)
+polygon = PackedVector2Array(0, 56, 64, 56, 64, -8, 0, -8)
+
+[node name="Platform20" parent="." instance=ExtResource("3_ls8vg")]
+position = Vector2(1408, 520)
+polygon = PackedVector2Array(0, 56, 64, 56, 64, -8, 0, -8)
+
+[node name="Platform21" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(1472, 328)
+polygon = PackedVector2Array(0, 56, 64, 56, 64, -8, 0, -8)
+
+[node name="Platform22" parent="." instance=ExtResource("3_ls8vg")]
+position = Vector2(1408, 392)
+polygon = PackedVector2Array(0, 56, 64, 56, 64, -8, 0, -8)
+
+[node name="Platform25" parent="." instance=ExtResource("5_sip1s")]
+position = Vector2(1536, 512)
+polygon = PackedVector2Array(0, 64, 64, 64, 64, -320, 128, -320, 128, -448, 64, -448, 64, -384, -192, -384, -192, -320, 0, -320)
+
+[node name="Platform23" parent="." instance=ExtResource("5_sip1s")]
+position = Vector2(1216, 256)
+polygon = PackedVector2Array(0, 64, 256, 64, 256, 0, 64, 0, 64, -192, 0, -192)
+
+[node name="Platform24" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(1472, 512)
+polygon = PackedVector2Array(0, 64, 64, 64, 64, 0, 0, 0)
+
+[node name="Platform26" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(1472, 384)
+polygon = PackedVector2Array(0, 64, 64, 64, 64, 0, 0, 0)
+
+[node name="Platform27" parent="." instance=ExtResource("3_ls8vg")]
+position = Vector2(1472, 192)
+polygon = PackedVector2Array(0, 128, 64, 128, 64, 0, 0, 0)
+
+[node name="Platform28" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(1408, 192)
+polygon = PackedVector2Array(0, 64, 64, 64, 64, 0, 0, 0)
+
+[node name="Platform29" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(1344, 192)
+polygon = PackedVector2Array(0, 64, 64, 64, 64, 0, 0, 0)
+
+[node name="Platform30" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(1280, 192)
+polygon = PackedVector2Array(0, 64, 64, 64, 64, 0, 0, 0)
+
+[node name="Platform31" parent="." instance=ExtResource("3_ls8vg")]
+position = Vector2(1280, 128)
+polygon = PackedVector2Array(0, 64, 64, 64, 64, 0, 0, 0)
+
+[node name="Platform32" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(1280, 64)
+polygon = PackedVector2Array(0, 64, 64, 64, 64, 0, 0, 0)
+
+[node name="Platform33" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(1344, 64)
+polygon = PackedVector2Array(0, 64, 256, 64, 256, 0, 0, 0)
+
+[node name="Platform34" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(1600, 448)
+polygon = PackedVector2Array(0, 64, 64, 64, 64, 0, 0, 0)
+
+[node name="Platform35" parent="." instance=ExtResource("3_ls8vg")]
+position = Vector2(1600, 512)
+polygon = PackedVector2Array(0, 64, 192, 64, 192, -128, 128, -128, 128, -64, 64, -64, 64, 0, 0, 0)
+
+[node name="Platform36" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(1600, 384)
+polygon = PackedVector2Array(0, 64, 128, 64, 128, 0, 0, 0)
+
+[node name="Platform37" parent="." instance=ExtResource("2_7jwgc")]
+position = Vector2(1600, 320)
+polygon = PackedVector2Array(0, 64, 192, 64, 192, 0, 64, 0, 64, -64, 0, -64)
+
+[node name="Platform38" parent="." instance=ExtResource("3_ls8vg")]
+position = Vector2(1664, 256)
+polygon = PackedVector2Array(0, 64, 128, 64, 128, 0, 0, 0)
+
+[node name="Platform39" parent="." instance=ExtResource("4_q0de7")]
+position = Vector2(1600, 192)
+polygon = PackedVector2Array(0, 64, 192, 64, 192, -128, 64, -128, 64, 0, 0, 0)

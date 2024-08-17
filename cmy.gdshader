@@ -5,14 +5,18 @@ uniform bool magenta = true;
 uniform bool yellow = true;
 
 uniform float angle: hint_range(0, 1.57079632679) = 0.0; // repeats every PI / 2
-uniform float frequency: hint_range(0, 0.1) = 0.06;
+uniform float frequency: hint_range(0, 5) = 0.06;
+uniform float emboss: hint_range(0.85, 0.95) = 0.85;
 
 const vec4 _cyan = vec4(0.0, 0.678, 0.937, 1.0);
 const vec4 _magenta = vec4(0.937, 0.0, 0.545, 1.0);
 const vec4 _yellow = vec4(1.0, 0.945, 0.0, 1.0);
 
+
 void vertex() { // rotate UVs by angle
+	UV = VERTEX;
 	UV *= mat2(vec2(cos(angle), -sin(angle)), vec2(sin(angle), cos(angle)));
+	//UV.x += TIME * 0.001;
 }
 
 vec4 cell_color(float _x, float _y, float cells) {
@@ -31,7 +35,7 @@ vec4 cell_color(float _x, float _y, float cells) {
 			return _magenta;
 		}
 		//if (x < 0.75) {
-			return _cyan;
+		return _cyan;
 		//}
 		//return vec4(1.0);
 
@@ -44,39 +48,48 @@ vec4 cell_color(float _x, float _y, float cells) {
 			return _magenta;
 		}
 		//if (y < 0.75) {
-			return _cyan;
+		return _cyan;
 		//}
 		//return vec4(0.0, 0.0, 0.0, 1.0);
 	}
 	
 }
 
-void fragment() {
+vec4 color(vec2 uv, float cells) {
 	// Called for every pixel the material is visible on.
+
 	if (cyan && magenta && yellow ) {
-		float cells = (TEXTURE_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.x) * frequency;
-		float x = mod(UV.x * cells, 2.0);
-		float y = mod(UV.y * cells, 2.0);
-		COLOR = cell_color(UV.x, UV.y, cells);
+		float x = mod(uv.x * cells, 2.0);
+		float y = mod(uv.y * cells, 2.0);
+		return cell_color(uv.x, uv.y, cells);
 	} else if (cyan && magenta) {
-		float cells = TEXTURE_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.x * frequency;
-		bool cell = mod(floor(UV.x * cells) + floor(UV.y * cells), 2.0) == 0.0;
-		COLOR = cell ? _cyan : _magenta;
+		return _cyan * _magenta;
+		bool cell = mod(floor(uv.x * cells) + floor(uv.y * cells), 2.0) == 0.0;
+		return cell ? _cyan : _magenta;
 	} else if (cyan && yellow) {
-		float cells = TEXTURE_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.x * frequency;
-		bool cell = mod(floor(UV.x * cells) + floor(UV.y * cells), 2.0) == 0.0;
-		COLOR = cell ? _cyan : _yellow;
+		bool cell = mod(floor(uv.x * cells) + floor(uv.y * cells), 2.0) == 0.0;
+		return cell ? _cyan : _yellow;
 	} else if (magenta && yellow) {
-		float cells = TEXTURE_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.x * frequency;
-		bool cell = mod(floor(UV.x * cells) + floor(UV.y * cells), 2.0) == 0.0;
-		COLOR = cell ? _magenta : _yellow;
+		bool cell = mod(floor(uv.x * cells) + floor(uv.y * cells), 2.0) == 0.0;
+		return cell ? _magenta : _yellow;
 	} else if (cyan) {
-		COLOR = _cyan;
+		bool cell = mod(floor(uv.x * cells) + floor(uv.y * cells), 2.0) == 0.0;
+		return cell ? _cyan : _cyan * emboss;
 	} else if (magenta) {
-		COLOR = _magenta;
+		bool cell = mod(floor(uv.x * cells) + floor(uv.y * cells), 2.0) == 0.0;
+		return cell ? _magenta : _magenta * emboss;
 	} else if (yellow) {
-		COLOR = _yellow;
+		bool cell = mod(floor(uv.x * cells) + floor(uv.y * cells), 2.0) == 0.0;
+		return cell ? _yellow : _yellow * emboss;
 	}
+}
+
+void fragment() {
+	float cells = (TEXTURE_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.x) * frequency; 
+	vec4 a = color(vec2(UV.x - 0.5, UV.y), cells);
+	vec4 b = color(vec2(UV.x + 0.5, UV.y - 0.5), cells);
+	vec4 c = color(vec2(UV.x, UV.y - 0.5), cells);
+	COLOR = (a + b + c) / 3.0;
 }
 
 //void light() {
