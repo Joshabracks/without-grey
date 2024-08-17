@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvjqolo21eqho"]
-
-[ext_resource type="PackedScene" uid="uid://c55d1pn0pou87" path="res://gameplay/platform/platform.tscn" id="1_0rs5c"]
-
-[node name="Platform" type="Node"]
-
-[node name="Platform" parent="." instance=ExtResource("1_0rs5c")]
-cyan = false

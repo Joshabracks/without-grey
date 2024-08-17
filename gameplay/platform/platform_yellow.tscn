@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmo8lm38fe1fi"]
 
-[ext_resource type="Script" path="res://platform.gd" id="1_1kr1b"]
+[ext_resource type="Script" path="res://gameplay/platform/platform.gd" id="1_1kr1b"]
 
 [node name="Platform" type="Polygon2D"]
 color = Color(1, 1, 0, 1)

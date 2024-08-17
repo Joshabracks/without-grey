@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dddr776oo323h"]
+
+[ext_resource type="Script" path="res://gameplay/level/level_controller.gd" id="1_b1g1t"]
+[ext_resource type="PackedScene" uid="uid://b2ntrrmpqd784" path="res://gameplay/level/01.tscn" id="2_h6jrs"]
+[ext_resource type="PackedScene" uid="uid://ckvcvubuu22ud" path="res://gameplay/player/player_controller.tscn" id="3_u15ef"]
+
+[node name="LevelController" type="Node" node_paths=PackedStringArray("platform_container", "player_controller")]
+script = ExtResource("1_b1g1t")
+platform_container = NodePath("01")
+player_controller = NodePath("PlayerController")
+
+[node name="01" parent="." instance=ExtResource("2_h6jrs")]
+position = Vector2(-104, -160)
+
+[node name="PlayerController" parent="." instance=ExtResource("3_u15ef")]

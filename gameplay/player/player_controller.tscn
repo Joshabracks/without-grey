@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckvcvubuu22ud"]
+
+[ext_resource type="Script" path="res://gameplay/player/player_controller.gd" id="1_oqqhi"]
+[ext_resource type="Shader" path="res://gameplay/player/player_sprite.gdshader" id="2_hee8m"]
+[ext_resource type="Texture2D" uid="uid://b713hl6qsi2dg" path="res://gameplay/player/sprite.png" id="3_2114p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16nog"]
+shader = ExtResource("2_hee8m")
+shader_parameter/color = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4imv"]
+size = Vector2(18, 42)
+
+[node name="PlayerController" type="Node"]
+script = ExtResource("1_oqqhi")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+material = SubResource("ShaderMaterial_16nog")
+texture = ExtResource("3_2114p")
+hframes = 5
+vframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1, 11)
+shape = SubResource("RectangleShape2D_q4imv")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]

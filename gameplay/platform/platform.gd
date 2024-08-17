@@ -13,7 +13,7 @@ var collision: CollisionPolygon2D
 
 func _ready() -> void:
 	material = ShaderMaterial.new()
-	material.shader = load("res://cmy.gdshader")
+	material.shader = load("res://gameplay/platform/platform.gdshader")
 	material.set_shader_parameter("cyan", cyan)
 	material.set_shader_parameter("magenta", magenta)
 	material.set_shader_parameter("yellow", yellow)
