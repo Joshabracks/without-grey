@@ -5,18 +5,22 @@ enum ACTION {
 	DEFAULT, ROLL, DASH
 }
 
+@export var player: CharacterBody2D
+@export var sprite: AnimatedSprite2D
 var action: ACTION = ACTION.DEFAULT
 
 var player_color: Global.CMY = Global.CMY.CYAN
 var key_pressed_a: bool = false
 var key_pressed_s: bool = false
 var key_pressed_d: bool = false
-@onready var sprite: AnimatedSprite2D = $CharacterBody2D/AnimatedSprite2D
+var coyote_time: float = 0.0
 var right: bool = true
 # Called when the node enters the scene tree for the first time.
-const SPEED = 300.0
-const JUMP_FORCE = -400.0
-
+var speed: float = 300.0
+var jump_force: float = -400.0
+var max_jumps: int = 2
+var jumps: int = 0
+var jumping: bool = false
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #func _ready() -> void:
@@ -47,22 +51,22 @@ func _change_color():
 
 func _animate(delta: float):
 	sprite.flip_h = !right
-	var idle: bool = $CharacterBody2D.velocity.y + abs($CharacterBody2D.velocity.x) == 0
+	var idle: bool = player.velocity.y + abs(player.velocity.x) == 0
 	if idle:
 		sprite.play("idle")
 		return
-	if $CharacterBody2D.velocity.x != 0:
-		right = $CharacterBody2D.velocity.x > 0
-	var grounded: bool = $CharacterBody2D.is_on_floor()
-	var right: bool = $CharacterBody2D.velocity.x > 0
+	if player.velocity.x != 0:
+		right = player.velocity.x > 0
+	var grounded: bool = player.is_on_floor()
+	var right: bool = player.velocity.x > 0
 	if grounded && action == ACTION.DEFAULT:
 		sprite.play("run")
 		return
-	var up: bool = $CharacterBody2D.velocity.y > 0
-	if !grounded && $CharacterBody2D.velocity.y > 0:
+	var up: bool = player.velocity.y > 0
+	if !grounded && player.velocity.y > 0:
 		sprite.play("jump_up")
 		return
-	if !grounded && $CharacterBody2D.velocity.y < 0:
+	if !grounded && player.velocity.y < 0:
 		sprite.play("jump_down")
 		return
 	if !grounded:
@@ -74,22 +78,35 @@ func _physics_process(delta):
 	# Change the color
 	_change_color()
 	
-	$CharacterBody2D/AnimatedSprite2D.material.set_shader_parameter("color", int(player_color))
+	sprite.material.set_shader_parameter("color", int(player_color))
 	# Add the gravity.
-	if !$CharacterBody2D.is_on_floor():
-		$CharacterBody2D.velocity.y += gravity * delta
-
+	if !player.is_on_floor():
+		player.velocity.y += gravity * delta
+		coyote_time += delta
+		if coyote_time > 0.15 && !jumping:
+			jumping = true
+			jumps += 1
+	else:
+		coyote_time = 0.0
+		jump_force = -400.0
+		jumps = 0
+		jumping = false
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") && $CharacterBody2D.is_on_floor():
-		$CharacterBody2D.velocity.y = JUMP_FORCE
+	var jump_a: bool = player.is_on_floor()
+	var jump_b: bool = coyote_time < 0.15
+	var jump_c: bool = jumps < max_jumps
+	if Input.is_action_just_pressed("ui_accept") && (jump_a || jump_b || jump_c):
+		player.velocity.y = jump_force
+		jumping = true
+		jumps += 1
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
-		$CharacterBody2D.velocity.x = direction * SPEED
+		player.velocity.x = direction * speed
 	else:
-		$CharacterBody2D.velocity.x = move_toward($CharacterBody2D.velocity.x, 0, SPEED)
+		player.velocity.x = move_toward(player.velocity.x, 0, speed)
 
-	$CharacterBody2D.move_and_slide()
+	player.move_and_slide()
 	_animate(delta)
