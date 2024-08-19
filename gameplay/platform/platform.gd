@@ -4,7 +4,7 @@ extends Polygon2D
 @export var cyan: bool
 @export var magenta: bool
 @export var yellow: bool
-var frequency: float = randf_range(0.0, 0.1)
+var frequency: float = randf_range(0.1, 0.25)
 var angle: float = randf_range(0.0, 1.57079632679)
 var emboss: float = randf_range(0.85, 0.95)
 

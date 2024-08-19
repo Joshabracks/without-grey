@@ -2,7 +2,7 @@ class_name PlayerController
 extends Node
 
 enum ACTION {
-	DEFAULT, ROLL, DASH
+	DEFAULT, ROLL, DASH, JUMP
 }
 
 @export var player: CharacterBody2D
@@ -63,13 +63,13 @@ func _animate(delta: float):
 		sprite.play("run")
 		return
 	var up: bool = player.velocity.y > 0
-	if !grounded && player.velocity.y > 0:
+	if !grounded && player.velocity.y > 0 && (coyote_time > 0.25 || action == ACTION.JUMP):
 		sprite.play("jump_up")
 		return
-	if !grounded && player.velocity.y < 0:
+	if !grounded && player.velocity.y < 0 && (coyote_time > 0.25 || action == ACTION.JUMP):
 		sprite.play("jump_down")
 		return
-	if !grounded:
+	if !grounded && (coyote_time > 0.25 || action == ACTION.JUMP):
 		sprite.play("jump_peak")
 		return
 	
@@ -87,6 +87,8 @@ func _physics_process(delta):
 			jumping = true
 			jumps += 1
 	else:
+		if action == ACTION.JUMP:
+			action = ACTION.DEFAULT
 		coyote_time = 0.0
 		jump_force = -400.0
 		jumps = 0
@@ -97,6 +99,7 @@ func _physics_process(delta):
 	var jump_c: bool = jumps < max_jumps
 	if Input.is_action_just_pressed("ui_accept") && (jump_a || jump_b || jump_c):
 		player.velocity.y = jump_force
+		action = ACTION.JUMP
 		jumping = true
 		jumps += 1
 

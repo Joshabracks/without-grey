@@ -14,6 +14,7 @@ const vec4 _yellow = vec4(1.0, 0.945, 0.0, 1.0);
 
 
 void vertex() { // rotate UVs by angle
+	
 	UV = VERTEX;
 	UV *= mat2(vec2(cos(angle), -sin(angle)), vec2(sin(angle), cos(angle)));
 	//UV.x += TIME * 0.001;
@@ -63,7 +64,6 @@ vec4 color(vec2 uv, float cells) {
 		float y = mod(uv.y * cells, 2.0);
 		return cell_color(uv.x, uv.y, cells);
 	} else if (cyan && magenta) {
-		return _cyan * _magenta;
 		bool cell = mod(floor(uv.x * cells) + floor(uv.y * cells), 2.0) == 0.0;
 		return cell ? _cyan : _magenta;
 	} else if (cyan && yellow) {
@@ -85,7 +85,7 @@ vec4 color(vec2 uv, float cells) {
 }
 
 void fragment() {
-	float cells = (TEXTURE_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.x) * frequency; 
+	float cells = frequency; 
 	vec4 a = color(vec2(UV.x - 0.5, UV.y), cells);
 	vec4 b = color(vec2(UV.x + 0.5, UV.y - 0.5), cells);
 	vec4 c = color(vec2(UV.x, UV.y - 0.5), cells);
