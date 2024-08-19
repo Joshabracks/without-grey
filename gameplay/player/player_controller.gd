@@ -15,12 +15,12 @@ var key_pressed_s: bool = false
 var key_pressed_d: bool = false
 var coyote_time: float = 0.0
 var right: bool = true
-# Called when the node enters the scene tree for the first time.
 var speed: float = 300.0
 var jump_force: float = -400.0
-var max_jumps: int = 2
+var max_jumps: int = 1
 var jumps: int = 0
 var jumping: bool = false
+
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #func _ready() -> void:
@@ -42,11 +42,11 @@ func _change_color():
 		key_pressed_s = true
 	elif !s && key_pressed_s:
 		key_pressed_s = false
-	if key_pressed_a && !key_pressed_d && !key_pressed_s:
+	if key_pressed_a && !key_pressed_d && !key_pressed_s && player.powers.cyan:
 		player_color = Global.CMY.CYAN
-	elif key_pressed_s && !key_pressed_a && !key_pressed_a:
+	elif key_pressed_s && !key_pressed_a && !key_pressed_a && player.powers.magenta:
 		player_color = Global.CMY.MAGENTA
-	elif key_pressed_d && !key_pressed_a && !key_pressed_s:
+	elif key_pressed_d && !key_pressed_a && !key_pressed_s && player.powers.yellow:
 		player_color = Global.CMY.YELLOW
 
 func _animate(delta: float):
