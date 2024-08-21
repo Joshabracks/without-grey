@@ -5,8 +5,8 @@ extends Area2D
 @export var color_index: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimatedSprite2D.material.set_shader_parameter("color", color_index)
-	$AnimatedSprite2D.play("default")
+	$ColorRect.material.set_shader_parameter("color", color_index)
+	#$AnimatedSprite2D.play("default")
 
 func collect():
 	queue_free()

@@ -75,6 +75,9 @@ func _animate(delta: float):
 	
 
 func _physics_process(delta):
+	if player.powers["double-jump"]:
+		max_jumps += 1
+		player.powers["double-jump"] = false;
 	# Change the color
 	_change_color()
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs4pv1gbp4hod"
-path="res://.godot/imported/Rocket Fire 2-Sheet.png-e161e66901104048d4cf61f912bda3b6.ctex"
+uid="uid://cjudy7apxwy8e"
+path="res://.godot/imported/u9ybH.png-09a02cb1ac12cb03a54690bdc93b1859.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/powerup/Rocket Fire 2-Sheet.png"
-dest_files=["res://.godot/imported/Rocket Fire 2-Sheet.png-e161e66901104048d4cf61f912bda3b6.ctex"]
+source_file="res://gameplay/powerup/u9ybH.png"
+dest_files=["res://.godot/imported/u9ybH.png-09a02cb1ac12cb03a54690bdc93b1859.ctex"]
 
 [params]
 

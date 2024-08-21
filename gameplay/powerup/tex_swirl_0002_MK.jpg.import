@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fmchqxbtg1xg"
-path="res://.godot/imported/Poison Cloud-Sheet.png-979259740d93645ef2ffdd09d29e3ebf.ctex"
+uid="uid://dtmc7iuh8ahmw"
+path="res://.godot/imported/tex_swirl_0002_MK.jpg-0cb78dbf84eb0ab320846f56b0c857df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/powerup/Poison Cloud-Sheet.png"
-dest_files=["res://.godot/imported/Poison Cloud-Sheet.png-979259740d93645ef2ffdd09d29e3ebf.ctex"]
+source_file="res://gameplay/powerup/tex_swirl_0002_MK.jpg"
+dest_files=["res://.godot/imported/tex_swirl_0002_MK.jpg-0cb78dbf84eb0ab320846f56b0c857df.ctex"]
 
 [params]
 
