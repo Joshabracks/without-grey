@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dddr776oo323h"]
+[gd_scene load_steps=51 format=3 uid="uid://dddr776oo323h"]
 
 [ext_resource type="Script" path="res://gameplay/level/level_controller.gd" id="1_b1g1t"]
 [ext_resource type="PackedScene" uid="uid://b2ntrrmpqd784" path="res://gameplay/level/01.tscn" id="2_h6jrs"]
@@ -269,15 +269,15 @@ shader_parameter/color = 2
 shader_parameter/noise = ExtResource("9_428wq")
 shader_parameter/noise2 = ExtResource("9_5rdg8")
 
-[sub_resource type="LabelSettings" id="LabelSettings_ogyh4"]
-font = ExtResource("9_772sb")
-font_size = 24
-font_color = Color(1, 1, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_rjwot"]
 font = ExtResource("9_772sb")
 font_size = 24
 font_color = Color(0.937255, 0, 0.545098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ogyh4"]
+font = ExtResource("9_772sb")
+font_size = 24
+font_color = Color(1, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_g7i0y"]
 font = ExtResource("9_772sb")
@@ -289,6 +289,11 @@ font = ExtResource("9_772sb")
 font_size = 26
 font_color = Color(1, 1, 0, 1)
 outline_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_slso3"]
+font = ExtResource("9_772sb")
+font_size = 24
+font_color = Color(0, 0.678431, 0.937255, 1)
 
 [node name="LevelController" type="Node" node_paths=PackedStringArray("platform_container", "player_controller")]
 script = ExtResource("1_b1g1t")
@@ -338,7 +343,7 @@ offset_right = 24.0
 offset_bottom = 40.22
 
 [node name="PowerDoubleJump" type="Area2D" parent="Powerups"]
-position = Vector2(5164, 720)
+position = Vector2(5480, 1968)
 script = ExtResource("7_ip1q6")
 power_name = "double-jump"
 
@@ -370,6 +375,16 @@ offset_top = 0.219971
 offset_right = 24.0
 offset_bottom = 40.22
 
+[node name="Label5" type="Label" parent="."]
+offset_left = -688.0
+offset_top = 976.0
+offset_right = -410.0
+offset_bottom = 1060.0
+text = "So close, but so far
+You can turn yellow by pressing \"D\"
+If only you had the power"
+label_settings = SubResource("LabelSettings_rjwot")
+
 [node name="Label3" type="Label" parent="."]
 offset_left = 1454.57
 offset_top = 1177.14
@@ -377,17 +392,6 @@ offset_right = 1837.57
 offset_bottom = 1203.14
 text = "Some elements are made up of more than one color"
 label_settings = SubResource("LabelSettings_ogyh4")
-
-[node name="Label" type="Label" parent="Label3"]
-layout_mode = 0
-offset_left = -2142.57
-offset_top = -201.14
-offset_right = -1864.57
-offset_bottom = -117.14
-text = "So close, but so far
-You can turn yellow by pressing \"D\"
-If only you had the power"
-label_settings = SubResource("LabelSettings_rjwot")
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 8.0
@@ -416,4 +420,14 @@ Cyan: \"A\"
 Magenta: \"S\"
 "
 label_settings = SubResource("LabelSettings_iq0wd")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 5528.0
+offset_top = 1872.0
+offset_right = 5682.0
+offset_bottom = 1927.0
+text = "Do what Kris Kross
+Would make you"
+label_settings = SubResource("LabelSettings_slso3")
 horizontal_alignment = 1
