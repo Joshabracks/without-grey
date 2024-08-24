@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dddr776oo323h"]
+[gd_scene load_steps=54 format=3 uid="uid://dddr776oo323h"]
 
 [ext_resource type="Script" path="res://gameplay/level/level_controller.gd" id="1_b1g1t"]
 [ext_resource type="PackedScene" uid="uid://b2ntrrmpqd784" path="res://gameplay/level/01.tscn" id="2_h6jrs"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dtmc7iuh8ahmw" path="res://gameplay/powerup/tex_swirl_0002_MK.jpg" id="9_428wq"]
 [ext_resource type="FontFile" uid="uid://cjrr4qe087siq" path="res://Intensa Fuente.ttf" id="9_772sb"]
 [ext_resource type="Shader" path="res://gameplay/powerup/powerup2.gdshader" id="11_vwm5t"]
+[ext_resource type="Texture2D" uid="uid://borf5h651hm1n" path="res://WITHOUT_GREY_LOGO.svg" id="13_b7e4g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0a133"]
 shader = ExtResource("4_tv53i")
@@ -262,6 +263,12 @@ shader_parameter/color = 0
 shader_parameter/noise = ExtResource("9_5rdg8")
 shader_parameter/noise2 = ExtResource("9_5rdg8")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8b3mp"]
+shader = ExtResource("11_vwm5t")
+shader_parameter/time_scale = 1.0
+shader_parameter/color = 0
+shader_parameter/noise = ExtResource("9_5rdg8")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ccd8"]
 shader = ExtResource("8_sxxbw")
 shader_parameter/time_scale = 1.0
@@ -294,6 +301,15 @@ outline_color = Color(1, 1, 0, 1)
 font = ExtResource("9_772sb")
 font_size = 24
 font_color = Color(0, 0.678431, 0.937255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ywngc"]
+font = ExtResource("9_772sb")
+font_size = 30
+font_color = Color(1, 0.945098, 0, 1)
+outline_size = 12
+outline_color = Color(0, 0.678431, 0.937255, 1)
+shadow_size = 19
+shadow_color = Color(0.937255, 0, 0.545098, 1)
 
 [node name="LevelController" type="Node" node_paths=PackedStringArray("platform_container", "player_controller")]
 script = ExtResource("1_b1g1t")
@@ -353,6 +369,22 @@ shape = SubResource("RectangleShape2D_osquw")
 
 [node name="ColorRect" type="ColorRect" parent="Powerups/PowerDoubleJump"]
 material = SubResource("ShaderMaterial_ww0cm")
+offset_left = -16.0
+offset_top = 0.219971
+offset_right = 24.0
+offset_bottom = 40.22
+
+[node name="End" type="Area2D" parent="Powerups"]
+position = Vector2(936, -29)
+script = ExtResource("7_ip1q6")
+power_name = "end"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Powerups/End"]
+position = Vector2(3.5, 21.22)
+shape = SubResource("RectangleShape2D_osquw")
+
+[node name="ColorRect" type="ColorRect" parent="Powerups/End"]
+material = SubResource("ShaderMaterial_8b3mp")
 offset_left = -16.0
 offset_top = 0.219971
 offset_right = 24.0
@@ -431,3 +463,25 @@ text = "Do what Kris Kross
 Would make you"
 label_settings = SubResource("LabelSettings_slso3")
 horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 747.88
+offset_top = -1107.9
+offset_right = 965.88
+offset_bottom = -1074.9
+text = "Thank you for playing"
+label_settings = SubResource("LabelSettings_ywngc")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 703.0
+offset_top = -1550.0
+offset_right = 1021.0
+offset_bottom = -1517.0
+text = "A game by Josh Almanza Bracks"
+label_settings = SubResource("LabelSettings_ywngc")
+horizontal_alignment = 1
+
+[node name="WithoutGreyLogo" type="Sprite2D" parent="."]
+position = Vector2(872, -2152)
+texture = ExtResource("13_b7e4g")

@@ -3,8 +3,8 @@ extends Node
 enum CMY {
 	CYAN,
 	MAGENTA,
-	YELLOW
+	YELLOW,
+	WHITE
 }
 
 var player_color: CMY = CMY.CYAN
-

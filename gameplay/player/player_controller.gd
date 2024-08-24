@@ -74,7 +74,17 @@ func _animate(delta: float):
 		return
 	
 
+var end_color: Global.CMY = Global.CMY.CYAN
+
 func _physics_process(delta):
+	if player.powers.end:
+		player_color = Global.CMY.WHITE
+		end_color += 1
+		if end_color > Global.CMY.YELLOW:
+			end_color = Global.CMY.CYAN
+		sprite.material.set_shader_parameter("color", int(end_color))
+		player.move_and_slide()
+		return
 	if player.powers["double-jump"]:
 		max_jumps += 1
 		player.powers["double-jump"] = false;

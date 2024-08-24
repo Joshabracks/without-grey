@@ -11,6 +11,7 @@ var powers: Dictionary = {
 	"yellow": false,
 	"double-jump": false,
 	"sprint": false,
+	"end": false
 }
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -18,6 +19,14 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta: float) -> void:
+	if powers.end:
+		velocity.y = -(delta * gravity * 4)
+		velocity.x = 0
+		powers.cyan = false
+		powers.magenta = false
+		powers.yellow = false
+		powers["double-jump"] = false
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta

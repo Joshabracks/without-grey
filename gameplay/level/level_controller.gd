@@ -11,6 +11,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if player_controller.player.position.y < -2656:
+		get_tree().reload_current_scene()
 	for platform: Platform in platform_container.get_children():
 		var player_block: bool = (player_controller.player_color == Global.CMY.CYAN && platform.cyan) || (player_controller.player_color == Global.CMY.MAGENTA && platform.magenta) || (player_controller.player_color == Global.CMY.YELLOW && platform.yellow)
 		platform.collision.disabled = !player_block
