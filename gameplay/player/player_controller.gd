@@ -7,6 +7,10 @@ enum ACTION {
 
 @export var player: CharacterBody2D
 @export var sprite: AnimatedSprite2D
+@export var player_audio: AudioStreamPlayer2D
+@export var audio_jump: Array[AudioStream]
+@export var audio_step: Array[AudioStream]
+@export var audio_landing: Array[AudioStream]
 var action: ACTION = ACTION.DEFAULT
 
 var player_color: Global.CMY = Global.CMY.CYAN
@@ -23,8 +27,14 @@ var jumping: bool = false
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-#func _ready() -> void:
-	#pass # Replace with function body.
+func _ready() -> void:
+	sprite.frame_changed.connect(_on_frame_changed)
+
+func _on_frame_changed() -> void:
+	match [sprite.animation, sprite.frame]:
+		["run", 0], ["run", 4 ]:
+			player_audio.stream = audio_step[randi_range(0, len(audio_step) - 1)]
+			player_audio.play()
 
 func _change_color():
 	var a: bool = Input.is_key_pressed(KEY_A)

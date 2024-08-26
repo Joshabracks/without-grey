@@ -1,18 +1,33 @@
-[gd_scene load_steps=54 format=3 uid="uid://dddr776oo323h"]
+[gd_scene load_steps=69 format=3 uid="uid://dddr776oo323h"]
 
 [ext_resource type="Script" path="res://gameplay/level/level_controller.gd" id="1_b1g1t"]
 [ext_resource type="PackedScene" uid="uid://b2ntrrmpqd784" path="res://gameplay/level/01.tscn" id="2_h6jrs"]
 [ext_resource type="PackedScene" uid="uid://ckvcvubuu22ud" path="res://gameplay/player/player_controller.tscn" id="3_u15ef"]
 [ext_resource type="Script" path="res://gameplay/level/CharacterBody2D.gd" id="4_p3uh8"]
 [ext_resource type="Shader" path="res://gameplay/player/player_sprite.gdshader" id="4_tv53i"]
+[ext_resource type="AudioStream" uid="uid://dmps1t6my10dg" path="res://gameplay/audio/effect/jump_01.wav" id="5_vkww8"]
 [ext_resource type="Texture2D" uid="uid://b713hl6qsi2dg" path="res://gameplay/player/sprite.png" id="5_yfr26"]
+[ext_resource type="AudioStream" uid="uid://deq06u851nyn3" path="res://gameplay/audio/effect/jump_02.wav" id="6_mgf6n"]
 [ext_resource type="Script" path="res://gameplay/powerup/powerup.gd" id="7_ip1q6"]
+[ext_resource type="AudioStream" uid="uid://bf8si6xpyh3u0" path="res://gameplay/audio/effect/jump_03.wav" id="7_q3esf"]
+[ext_resource type="AudioStream" uid="uid://btyikf5itasej" path="res://gameplay/audio/effect/jump_04.wav" id="8_njap3"]
 [ext_resource type="Shader" path="res://gameplay/powerup/powerup.gdshader" id="8_sxxbw"]
 [ext_resource type="Texture2D" uid="uid://cjudy7apxwy8e" path="res://gameplay/powerup/u9ybH.png" id="9_5rdg8"]
 [ext_resource type="Texture2D" uid="uid://dtmc7iuh8ahmw" path="res://gameplay/powerup/tex_swirl_0002_MK.jpg" id="9_428wq"]
 [ext_resource type="FontFile" uid="uid://cjrr4qe087siq" path="res://Intensa Fuente.ttf" id="9_772sb"]
+[ext_resource type="AudioStream" uid="uid://on6mejt03ui1" path="res://gameplay/audio/effect/jump_05.wav" id="9_m4ogv"]
+[ext_resource type="AudioStream" uid="uid://vflmb2fkfn54" path="res://gameplay/audio/effect/jump_06.wav" id="10_7m2rn"]
 [ext_resource type="Shader" path="res://gameplay/powerup/powerup2.gdshader" id="11_vwm5t"]
+[ext_resource type="AudioStream" uid="uid://dl1le5vqocyn3" path="res://gameplay/audio/effect/step_01.wav" id="11_w1nee"]
+[ext_resource type="AudioStream" uid="uid://cvsi1nq65kfj1" path="res://gameplay/audio/effect/step_02.wav" id="12_5eyks"]
+[ext_resource type="AudioStream" uid="uid://vmthn21s53dx" path="res://gameplay/audio/effect/step_03.wav" id="13_6b5xu"]
 [ext_resource type="Texture2D" uid="uid://borf5h651hm1n" path="res://WITHOUT_GREY_LOGO.svg" id="13_b7e4g"]
+[ext_resource type="AudioStream" uid="uid://cu1774ckoyh8e" path="res://gameplay/audio/effect/step_04.wav" id="14_2ym80"]
+[ext_resource type="AudioStream" uid="uid://cvoa0cjnd4h0s" path="res://gameplay/audio/effect/landing_01.wav" id="15_x572s"]
+[ext_resource type="AudioStream" uid="uid://deo05alr5a3vc" path="res://gameplay/audio/effect/landing_02.wav" id="16_we0db"]
+[ext_resource type="AudioStream" uid="uid://bum5el4xiltrf" path="res://gameplay/audio/effect/landing_03.wav" id="17_c1e6x"]
+[ext_resource type="AudioStream" uid="uid://b5f3d0ojn2f2e" path="res://gameplay/audio/effect/landing_04.wav" id="18_fyqmb"]
+[ext_resource type="AudioStream" uid="uid://jwetc8w8ie1l" path="res://gameplay/audio/effect/landing_05.wav" id="19_nx3hi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0a133"]
 shader = ExtResource("4_tv53i")
@@ -319,9 +334,13 @@ player_controller = NodePath("PlayerController")
 [node name="01" parent="." instance=ExtResource("2_h6jrs")]
 position = Vector2(-104, -160)
 
-[node name="PlayerController" parent="." node_paths=PackedStringArray("player", "sprite") instance=ExtResource("3_u15ef")]
+[node name="PlayerController" parent="." node_paths=PackedStringArray("player", "sprite", "player_audio") instance=ExtResource("3_u15ef")]
 player = NodePath("../CharacterBody2D")
 sprite = NodePath("../CharacterBody2D/AnimatedSprite2D")
+player_audio = NodePath("../CharacterBody2D/AudioStreamPlayer2D")
+audio_jump = Array[AudioStream]([ExtResource("5_vkww8"), ExtResource("6_mgf6n"), ExtResource("7_q3esf"), ExtResource("8_njap3"), ExtResource("9_m4ogv"), ExtResource("10_7m2rn")])
+audio_step = Array[AudioStream]([ExtResource("11_w1nee"), ExtResource("12_5eyks"), ExtResource("13_6b5xu"), ExtResource("14_2ym80")])
+audio_landing = Array[AudioStream]([ExtResource("15_x572s"), ExtResource("16_we0db"), ExtResource("17_c1e6x"), ExtResource("18_fyqmb"), ExtResource("19_nx3hi")])
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(414, -56)
@@ -330,7 +349,7 @@ script = ExtResource("4_p3uh8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 material = SubResource("ShaderMaterial_0a133")
 sprite_frames = SubResource("SpriteFrames_57gpp")
-animation = &"jump_down"
+animation = &"jump_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(1, 11)
@@ -338,6 +357,9 @@ shape = SubResource("RectangleShape2D_b0wlr")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(1, 3)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+bus = &"SoundEffects"
 
 [node name="Powerups" type="Node" parent="."]
 
