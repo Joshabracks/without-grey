@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://4tb6kky4dgmh"]
+
+[ext_resource type="Script" path="res://gameplay/audio/music.gd" id="1_5sa2u"]
+[ext_resource type="AudioStream" uid="uid://dunouecpavmws" path="res://gameplay/audio/onrepeat_01.wav" id="2_e6h7u"]
+[ext_resource type="AudioStream" uid="uid://c3btse0tbowwq" path="res://gameplay/audio/onrepeat_02.wav" id="3_36vht"]
+[ext_resource type="AudioStream" uid="uid://dsiga8rcc3bh6" path="res://gameplay/audio/onrepeat_03.wav" id="4_xpp76"]
+
+[node name="Music" type="AudioStreamPlayer"]
+volume_db = -20.0
+bus = &"Music"
+script = ExtResource("1_5sa2u")
+start = ExtResource("2_e6h7u")
+body = ExtResource("3_36vht")
+end = ExtResource("4_xpp76")

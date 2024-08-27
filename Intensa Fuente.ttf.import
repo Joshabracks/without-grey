@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cjrr4qe087siq"
+path="res://.godot/imported/Intensa Fuente.ttf-02ea7d5b92cf8bb466355919d2f3fd55.fontdata"
+
+[deps]
+
+source_file="res://Intensa Fuente.ttf"
+dest_files=["res://.godot/imported/Intensa Fuente.ttf-02ea7d5b92cf8bb466355919d2f3fd55.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

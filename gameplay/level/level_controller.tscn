@@ -1,0 +1,543 @@
+[gd_scene load_steps=67 format=3 uid="uid://dddr776oo323h"]
+
+[ext_resource type="Script" path="res://gameplay/level/level_controller.gd" id="1_b1g1t"]
+[ext_resource type="PackedScene" uid="uid://b2ntrrmpqd784" path="res://gameplay/level/01.tscn" id="2_h6jrs"]
+[ext_resource type="PackedScene" uid="uid://ckvcvubuu22ud" path="res://gameplay/player/player_controller.tscn" id="3_u15ef"]
+[ext_resource type="Script" path="res://gameplay/level/CharacterBody2D.gd" id="4_p3uh8"]
+[ext_resource type="Shader" path="res://gameplay/player/player_sprite.gdshader" id="4_tv53i"]
+[ext_resource type="AudioStream" uid="uid://dmps1t6my10dg" path="res://gameplay/audio/effect/jump_01.wav" id="5_vkww8"]
+[ext_resource type="Texture2D" uid="uid://b713hl6qsi2dg" path="res://gameplay/player/sprite.png" id="5_yfr26"]
+[ext_resource type="AudioStream" uid="uid://deq06u851nyn3" path="res://gameplay/audio/effect/jump_02.wav" id="6_mgf6n"]
+[ext_resource type="Script" path="res://gameplay/powerup/powerup.gd" id="7_ip1q6"]
+[ext_resource type="AudioStream" uid="uid://bf8si6xpyh3u0" path="res://gameplay/audio/effect/jump_03.wav" id="7_q3esf"]
+[ext_resource type="Shader" path="res://gameplay/powerup/powerup.gdshader" id="8_sxxbw"]
+[ext_resource type="Texture2D" uid="uid://cjudy7apxwy8e" path="res://gameplay/powerup/u9ybH.png" id="9_5rdg8"]
+[ext_resource type="Texture2D" uid="uid://dtmc7iuh8ahmw" path="res://gameplay/powerup/tex_swirl_0002_MK.jpg" id="9_428wq"]
+[ext_resource type="FontFile" uid="uid://cjrr4qe087siq" path="res://Intensa Fuente.ttf" id="9_772sb"]
+[ext_resource type="Shader" path="res://gameplay/powerup/powerup2.gdshader" id="11_vwm5t"]
+[ext_resource type="AudioStream" uid="uid://dl1le5vqocyn3" path="res://gameplay/audio/effect/step_01.wav" id="11_w1nee"]
+[ext_resource type="AudioStream" uid="uid://cvsi1nq65kfj1" path="res://gameplay/audio/effect/step_02.wav" id="12_5eyks"]
+[ext_resource type="AudioStream" uid="uid://vmthn21s53dx" path="res://gameplay/audio/effect/step_03.wav" id="13_6b5xu"]
+[ext_resource type="Texture2D" uid="uid://borf5h651hm1n" path="res://WITHOUT_GREY_LOGO.svg" id="13_b7e4g"]
+[ext_resource type="AudioStream" uid="uid://cu1774ckoyh8e" path="res://gameplay/audio/effect/step_04.wav" id="14_2ym80"]
+[ext_resource type="AudioStream" uid="uid://deo05alr5a3vc" path="res://gameplay/audio/effect/landing_02.wav" id="16_we0db"]
+[ext_resource type="AudioStream" uid="uid://bum5el4xiltrf" path="res://gameplay/audio/effect/landing_03.wav" id="17_c1e6x"]
+[ext_resource type="AudioStream" uid="uid://b5f3d0ojn2f2e" path="res://gameplay/audio/effect/landing_04.wav" id="18_fyqmb"]
+[ext_resource type="AudioStream" uid="uid://jwetc8w8ie1l" path="res://gameplay/audio/effect/landing_05.wav" id="19_nx3hi"]
+[ext_resource type="Script" path="res://gameplay/level/WithoutGreyLogo.gd" id="25_5cyd8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0a133"]
+shader = ExtResource("4_tv53i")
+shader_parameter/color = 0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs0r6"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ufit"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(256, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vits2"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyt65"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x36qe"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t34ed"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4slo"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy84y"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruseq"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0np2k"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t61jl"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv6lj"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dcwu"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f27ak"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk26r"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdfun"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7q64"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4ev4"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l62yk"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yess6"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unm14"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csuk0"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8g10"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk6ie"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b21d"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vs0s"]
+atlas = ExtResource("5_yfr26")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57gpp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs0r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ufit")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vits2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyt65")
+}],
+"loop": true,
+"name": &"dash_prep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x36qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t34ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4slo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hy84y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruseq")
+}],
+"loop": true,
+"name": &"jump_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0np2k")
+}],
+"loop": true,
+"name": &"jump_peak",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t61jl")
+}],
+"loop": true,
+"name": &"jump_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv6lj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dcwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f27ak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk26r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdfun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7q64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4ev4")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l62yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yess6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unm14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csuk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8g10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk6ie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b21d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vs0s")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0wlr"]
+size = Vector2(18, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osquw"]
+size = Vector2(39, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wi375"]
+shader = ExtResource("8_sxxbw")
+shader_parameter/time_scale = 1.0
+shader_parameter/color = 1
+shader_parameter/collect_timer = 0.0
+shader_parameter/noise = ExtResource("9_5rdg8")
+shader_parameter/noise2 = ExtResource("9_428wq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ww0cm"]
+shader = ExtResource("11_vwm5t")
+shader_parameter/time_scale = 1.0
+shader_parameter/color = 0
+shader_parameter/noise = ExtResource("9_5rdg8")
+shader_parameter/noise2 = ExtResource("9_5rdg8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8b3mp"]
+shader = ExtResource("11_vwm5t")
+shader_parameter/time_scale = 1.0
+shader_parameter/color = 0
+shader_parameter/noise = ExtResource("9_5rdg8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ccd8"]
+shader = ExtResource("8_sxxbw")
+shader_parameter/time_scale = 1.0
+shader_parameter/color = 2
+shader_parameter/collect_timer = 0.0
+shader_parameter/noise = ExtResource("9_428wq")
+shader_parameter/noise2 = ExtResource("9_5rdg8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_rjwot"]
+font = ExtResource("9_772sb")
+font_size = 24
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ogyh4"]
+font = ExtResource("9_772sb")
+font_size = 24
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7i0y"]
+font = ExtResource("9_772sb")
+font_size = 24
+font_color = Color(0, 0.678431, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iq0wd"]
+font = ExtResource("9_772sb")
+font_size = 26
+font_color = Color(1, 1, 0, 1)
+outline_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_slso3"]
+font = ExtResource("9_772sb")
+font_size = 24
+font_color = Color(0, 0.678431, 0.937255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ywngc"]
+font = ExtResource("9_772sb")
+font_size = 30
+font_color = Color(1, 0.945098, 0, 1)
+outline_size = 12
+outline_color = Color(0, 0.678431, 0.937255, 1)
+shadow_size = 19
+shadow_color = Color(0.937255, 0, 0.545098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xltjw"]
+font = ExtResource("9_772sb")
+font_size = 24
+font_color = Color(0, 0.678431, 0.937255, 1)
+
+[node name="LevelController" type="Node" node_paths=PackedStringArray("platform_container", "player_controller")]
+script = ExtResource("1_b1g1t")
+platform_container = NodePath("01")
+player_controller = NodePath("PlayerController")
+
+[node name="01" parent="." instance=ExtResource("2_h6jrs")]
+position = Vector2(-104, -160)
+
+[node name="PlayerController" parent="." node_paths=PackedStringArray("player", "sprite", "player_audio") instance=ExtResource("3_u15ef")]
+player = NodePath("../CharacterBody2D")
+sprite = NodePath("../CharacterBody2D/AnimatedSprite2D")
+player_audio = NodePath("../CharacterBody2D/AudioStreamPlayer2D")
+audio_jump = Array[AudioStream]([ExtResource("5_vkww8"), ExtResource("6_mgf6n"), ExtResource("7_q3esf")])
+audio_step = Array[AudioStream]([ExtResource("11_w1nee"), ExtResource("12_5eyks"), ExtResource("13_6b5xu"), ExtResource("14_2ym80")])
+audio_landing = Array[AudioStream]([ExtResource("16_we0db"), ExtResource("17_c1e6x"), ExtResource("18_fyqmb"), ExtResource("19_nx3hi")])
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(414, -56)
+script = ExtResource("4_p3uh8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+material = SubResource("ShaderMaterial_0a133")
+sprite_frames = SubResource("SpriteFrames_57gpp")
+animation = &"jump_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1, 11)
+shape = SubResource("RectangleShape2D_b0wlr")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(1, 3)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+bus = &"SoundEffects"
+
+[node name="Powerups" type="Node" parent="."]
+
+[node name="PowerMagenta" type="Area2D" parent="Powerups"]
+position = Vector2(3528, 1130.78)
+script = ExtResource("7_ip1q6")
+power_name = "magenta"
+color_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Powerups/PowerMagenta"]
+position = Vector2(3.5, 21.22)
+shape = SubResource("RectangleShape2D_osquw")
+
+[node name="ColorRect" type="ColorRect" parent="Powerups/PowerMagenta"]
+material = SubResource("ShaderMaterial_wi375")
+offset_left = -16.0
+offset_top = 0.219971
+offset_right = 24.0
+offset_bottom = 40.22
+
+[node name="PowerDoubleJump" type="Area2D" parent="Powerups"]
+position = Vector2(5480, 1968)
+script = ExtResource("7_ip1q6")
+power_name = "double-jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Powerups/PowerDoubleJump"]
+position = Vector2(3.5, 21.22)
+shape = SubResource("RectangleShape2D_osquw")
+
+[node name="ColorRect" type="ColorRect" parent="Powerups/PowerDoubleJump"]
+material = SubResource("ShaderMaterial_ww0cm")
+offset_left = -16.0
+offset_top = 0.219971
+offset_right = 24.0
+offset_bottom = 40.22
+
+[node name="End" type="Area2D" parent="Powerups"]
+position = Vector2(936, -29)
+script = ExtResource("7_ip1q6")
+power_name = "end"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Powerups/End"]
+position = Vector2(3.5, 21.22)
+shape = SubResource("RectangleShape2D_osquw")
+
+[node name="ColorRect" type="ColorRect" parent="Powerups/End"]
+material = SubResource("ShaderMaterial_8b3mp")
+offset_left = -16.0
+offset_top = 0.219971
+offset_right = 24.0
+offset_bottom = 40.22
+
+[node name="PowerYellow" type="Area2D" parent="Powerups"]
+position = Vector2(-816, 984)
+script = ExtResource("7_ip1q6")
+power_name = "yellow"
+color_index = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Powerups/PowerYellow"]
+position = Vector2(3.5, 21.22)
+shape = SubResource("RectangleShape2D_osquw")
+
+[node name="ColorRect" type="ColorRect" parent="Powerups/PowerYellow"]
+material = SubResource("ShaderMaterial_2ccd8")
+offset_left = -16.0
+offset_top = 0.219971
+offset_right = 24.0
+offset_bottom = 40.22
+
+[node name="Label5" type="Label" parent="."]
+offset_left = -840.0
+offset_top = 952.0
+offset_right = -562.0
+offset_bottom = 1036.0
+text = "Yellow: \"D\""
+label_settings = SubResource("LabelSettings_rjwot")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1454.57
+offset_top = 1177.14
+offset_right = 1837.57
+offset_bottom = 1203.14
+text = "Some elements are made up of more than one color"
+label_settings = SubResource("LabelSettings_ogyh4")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 1064.0
+offset_right = 485.0
+offset_bottom = 1090.0
+text = "You can only interact with elements that have the same color as you"
+label_settings = SubResource("LabelSettings_g7i0y")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2504.0
+offset_top = 1144.0
+offset_right = 2804.0
+offset_bottom = 1203.0
+text = "There are three colors in the world
+"
+label_settings = SubResource("LabelSettings_iq0wd")
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 3128.0
+offset_top = 1180.0
+offset_right = 3428.0
+offset_bottom = 1301.0
+text = "If you have the power, you can change colors 
+Cyan: \"A\"
+Magenta: \"S\"
+"
+label_settings = SubResource("LabelSettings_iq0wd")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 5528.0
+offset_top = 1872.0
+offset_right = 5682.0
+offset_bottom = 1927.0
+text = "Do what Kris Kross
+Would make you"
+label_settings = SubResource("LabelSettings_slso3")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 827.88
+offset_top = -936.0
+offset_right = 1045.88
+offset_bottom = -903.0
+text = "Thank you for playing"
+label_settings = SubResource("LabelSettings_ywngc")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 767.0
+offset_top = -1080.0
+offset_right = 1085.0
+offset_bottom = -1047.0
+text = "A game by Josh Almanza Bracks"
+label_settings = SubResource("LabelSettings_ywngc")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="."]
+offset_left = 552.0
+offset_top = -1328.0
+offset_right = 1306.0
+offset_bottom = -1223.0
+text = "Music by Bensound
+License code: XFCKMJA4K515SVXL
+bensound.com/royalty-free-music/track/on-repeat-shiny-uplifting"
+label_settings = SubResource("LabelSettings_ywngc")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="."]
+offset_left = 767.0
+offset_top = -1560.0
+offset_right = 1085.0
+offset_bottom = -1455.0
+text = "Character Animation:
+Basil Homadi
+https://deviltearbasil.itch.io/"
+label_settings = SubResource("LabelSettings_ywngc")
+horizontal_alignment = 1
+
+[node name="WithoutGreyLogo" type="Sprite2D" parent="."]
+position = Vector2(888, -1872)
+texture = ExtResource("13_b7e4g")
+script = ExtResource("25_5cyd8")
+
+[node name="Label11" type="Label" parent="."]
+offset_left = -63.7618
+offset_top = -671.105
+offset_right = -23.7618
+offset_bottom = -648.105
+text = "Almost there..."
+label_settings = SubResource("LabelSettings_xltjw")
+horizontal_alignment = 1

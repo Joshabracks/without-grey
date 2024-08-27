@@ -11,9 +11,19 @@ config_version=5
 [application]
 
 config/name="Without Grey"
-run/main_scene="res://test_block.tscn"
+run/main_scene="res://gameplay/level/level_controller.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://global.gd"
+Music="*res://gameplay/audio/music.tscn"
+PowerupPlayer="*res://gameplay/audio/effect/powerup_player.tscn"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [dotnet]
 

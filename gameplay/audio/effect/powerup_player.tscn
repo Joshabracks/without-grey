@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw8r534p0w67n"]
+
+[ext_resource type="AudioStream" uid="uid://cfvgrnbixyy0n" path="res://gameplay/audio/effect/pickup.wav" id="1_6gsme"]
+
+[node name="PowerupPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_6gsme")
+volume_db = -10.0
+bus = &"Music"

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dslw3dhokr8u1"]
+
+[ext_resource type="Script" path="res://gameplay/platform/platform.gd" id="1_058vk"]
+
+[node name="Platform" type="Polygon2D"]
+color = Color(0, 1, 1, 1)
+polygon = PackedVector2Array(0, 56, 64, 56, 64, 0, 0, 0)
+script = ExtResource("1_058vk")
+cyan = true
