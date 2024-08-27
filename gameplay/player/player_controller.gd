@@ -40,6 +40,8 @@ func _ready() -> void:
 			#player_audio.play()
 
 func _on_frame_changed() -> void:
+	if player_color == Global.CMY.WHITE:
+		return
 	match [sprite.animation, sprite.frame]:
 		["run", 0], ["run", 4 ]:
 			player_audio.stream = audio_step[randi_range(0, len(audio_step) - 1)]

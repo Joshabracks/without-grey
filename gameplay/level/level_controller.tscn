@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dddr776oo323h"]
+[gd_scene load_steps=67 format=3 uid="uid://dddr776oo323h"]
 
 [ext_resource type="Script" path="res://gameplay/level/level_controller.gd" id="1_b1g1t"]
 [ext_resource type="PackedScene" uid="uid://b2ntrrmpqd784" path="res://gameplay/level/01.tscn" id="2_h6jrs"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://bum5el4xiltrf" path="res://gameplay/audio/effect/landing_03.wav" id="17_c1e6x"]
 [ext_resource type="AudioStream" uid="uid://b5f3d0ojn2f2e" path="res://gameplay/audio/effect/landing_04.wav" id="18_fyqmb"]
 [ext_resource type="AudioStream" uid="uid://jwetc8w8ie1l" path="res://gameplay/audio/effect/landing_05.wav" id="19_nx3hi"]
+[ext_resource type="Script" path="res://gameplay/level/WithoutGreyLogo.gd" id="25_5cyd8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0a133"]
 shader = ExtResource("4_tv53i")
@@ -290,7 +291,7 @@ shader_parameter/noise2 = ExtResource("9_5rdg8")
 [sub_resource type="LabelSettings" id="LabelSettings_rjwot"]
 font = ExtResource("9_772sb")
 font_size = 24
-font_color = Color(0.937255, 0, 0.545098, 1)
+font_color = Color(1, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ogyh4"]
 font = ExtResource("9_772sb")
@@ -321,6 +322,11 @@ outline_size = 12
 outline_color = Color(0, 0.678431, 0.937255, 1)
 shadow_size = 19
 shadow_color = Color(0.937255, 0, 0.545098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xltjw"]
+font = ExtResource("9_772sb")
+font_size = 24
+font_color = Color(0, 0.678431, 0.937255, 1)
 
 [node name="LevelController" type="Node" node_paths=PackedStringArray("platform_container", "player_controller")]
 script = ExtResource("1_b1g1t")
@@ -426,13 +432,11 @@ offset_right = 24.0
 offset_bottom = 40.22
 
 [node name="Label5" type="Label" parent="."]
-offset_left = -688.0
-offset_top = 976.0
-offset_right = -410.0
-offset_bottom = 1060.0
-text = "So close, but so far
-You can turn yellow by pressing \"D\"
-If only you had the power"
+offset_left = -840.0
+offset_top = 952.0
+offset_right = -562.0
+offset_bottom = 1036.0
+text = "Yellow: \"D\""
 label_settings = SubResource("LabelSettings_rjwot")
 
 [node name="Label3" type="Label" parent="."]
@@ -483,23 +487,55 @@ label_settings = SubResource("LabelSettings_slso3")
 horizontal_alignment = 1
 
 [node name="Label7" type="Label" parent="."]
-offset_left = 747.88
-offset_top = -1107.9
-offset_right = 965.88
-offset_bottom = -1074.9
+offset_left = 827.88
+offset_top = -936.0
+offset_right = 1045.88
+offset_bottom = -903.0
 text = "Thank you for playing"
 label_settings = SubResource("LabelSettings_ywngc")
 horizontal_alignment = 1
 
 [node name="Label8" type="Label" parent="."]
-offset_left = 703.0
-offset_top = -1550.0
-offset_right = 1021.0
-offset_bottom = -1517.0
+offset_left = 767.0
+offset_top = -1080.0
+offset_right = 1085.0
+offset_bottom = -1047.0
 text = "A game by Josh Almanza Bracks"
 label_settings = SubResource("LabelSettings_ywngc")
 horizontal_alignment = 1
 
+[node name="Label9" type="Label" parent="."]
+offset_left = 552.0
+offset_top = -1328.0
+offset_right = 1306.0
+offset_bottom = -1223.0
+text = "Music by Bensound
+License code: XFCKMJA4K515SVXL
+bensound.com/royalty-free-music/track/on-repeat-shiny-uplifting"
+label_settings = SubResource("LabelSettings_ywngc")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="."]
+offset_left = 767.0
+offset_top = -1560.0
+offset_right = 1085.0
+offset_bottom = -1455.0
+text = "Character Animation:
+Basil Homadi
+https://deviltearbasil.itch.io/"
+label_settings = SubResource("LabelSettings_ywngc")
+horizontal_alignment = 1
+
 [node name="WithoutGreyLogo" type="Sprite2D" parent="."]
-position = Vector2(872, -2152)
+position = Vector2(888, -1872)
 texture = ExtResource("13_b7e4g")
+script = ExtResource("25_5cyd8")
+
+[node name="Label11" type="Label" parent="."]
+offset_left = -63.7618
+offset_top = -671.105
+offset_right = -23.7618
+offset_bottom = -648.105
+text = "Almost there..."
+label_settings = SubResource("LabelSettings_xltjw")
+horizontal_alignment = 1

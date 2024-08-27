@@ -7,4 +7,5 @@ enum CMY {
 	WHITE
 }
 
-var player_color: CMY = CMY.CYAN
+var game_over: bool = false
+var restart: bool = false

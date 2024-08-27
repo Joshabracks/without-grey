@@ -20,7 +20,12 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta: float) -> void:
 	if powers.end:
-		velocity.y = -(delta * gravity * 4)
+		if position.y > -1900:
+			velocity.y = -(delta * gravity * 4)
+		else:
+			velocity.y = 0.0
+			visible = false
+			Global.game_over = true
 		velocity.x = 0
 		powers.cyan = false
 		powers.magenta = false
