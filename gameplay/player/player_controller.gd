@@ -29,11 +29,22 @@ var jumping: bool = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready() -> void:
 	sprite.frame_changed.connect(_on_frame_changed)
+	#sprite.animation_changed.connect(_on_animation_changed)
+	
+#func _on_animation_changed() -> void:
+	#match sprite.animation:
+		#"jump_up":
+			#player_audio.stream = audio_jump[randi_range(0, len(audio_jump) - 1)]
+			#player_audio.pitch_scale = 2.5
+			#player_audio.volume_db = -25.0
+			#player_audio.play()
 
 func _on_frame_changed() -> void:
 	match [sprite.animation, sprite.frame]:
 		["run", 0], ["run", 4 ]:
 			player_audio.stream = audio_step[randi_range(0, len(audio_step) - 1)]
+			player_audio.pitch_scale = 1.0
+			player_audio.volume_db = 0.0
 			player_audio.play()
 
 func _change_color():
@@ -75,12 +86,15 @@ func _animate(delta: float):
 	var up: bool = player.velocity.y > 0
 	if !grounded && player.velocity.y > 0 && (coyote_time > 0.25 || action == ACTION.JUMP):
 		sprite.play("jump_up")
+		action = ACTION.JUMP
 		return
 	if !grounded && player.velocity.y < 0 && (coyote_time > 0.25 || action == ACTION.JUMP):
 		sprite.play("jump_down")
+		action = ACTION.JUMP
 		return
 	if !grounded && (coyote_time > 0.25 || action == ACTION.JUMP):
 		sprite.play("jump_peak")
+		action = ACTION.JUMP
 		return
 	
 
@@ -112,6 +126,10 @@ func _physics_process(delta):
 	else:
 		if action == ACTION.JUMP:
 			action = ACTION.DEFAULT
+			player_audio.stream = audio_landing[randi_range(0, len(audio_landing) - 1)]
+			player_audio.pitch_scale = 1.1
+			player_audio.volume_db = -2.0
+			player_audio.play()
 		coyote_time = 0.0
 		jump_force = -400.0
 		jumps = 0
@@ -123,6 +141,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") && (jump_a || jump_b || jump_c):
 		player.velocity.y = jump_force
 		action = ACTION.JUMP
+		player_audio.stream = audio_jump[randi_range(0, len(audio_jump) - 1)]
+		player_audio.pitch_scale = 1.1
+		player_audio.volume_db = -18.0
+		player_audio.play()
 		jumping = true
 		jumps += 1
 
