@@ -265,6 +265,7 @@ size = Vector2(39, 32)
 shader = ExtResource("8_sxxbw")
 shader_parameter/time_scale = 1.0
 shader_parameter/color = 1
+shader_parameter/collect_timer = 0.0
 shader_parameter/noise = ExtResource("9_5rdg8")
 shader_parameter/noise2 = ExtResource("9_428wq")
 
@@ -285,6 +286,7 @@ shader_parameter/noise = ExtResource("9_5rdg8")
 shader = ExtResource("8_sxxbw")
 shader_parameter/time_scale = 1.0
 shader_parameter/color = 2
+shader_parameter/collect_timer = 0.0
 shader_parameter/noise = ExtResource("9_428wq")
 shader_parameter/noise2 = ExtResource("9_5rdg8")
 
