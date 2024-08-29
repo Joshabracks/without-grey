@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl25odog8judi"]
+
+[ext_resource type="Script" path="res://gameplay/powerup/powerup.gd" id="1_b2cus"]
+[ext_resource type="Shader" path="res://gameplay/powerup/powerup2.gdshader" id="2_rwftx"]
+[ext_resource type="Texture2D" uid="uid://cjudy7apxwy8e" path="res://gameplay/powerup/u9ybH.png" id="3_3troc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osquw"]
+size = Vector2(39, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ww0cm"]
+shader = ExtResource("2_rwftx")
+shader_parameter/time_scale = 1.0
+shader_parameter/color = 0
+shader_parameter/noise = ExtResource("3_3troc")
+shader_parameter/noise2 = ExtResource("3_3troc")
+
+[node name="PowerDoubleJump" type="Area2D"]
+position = Vector2(5480, 1968)
+script = ExtResource("1_b2cus")
+power_name = "double-jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 21.22)
+shape = SubResource("RectangleShape2D_osquw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ww0cm")
+offset_left = -16.0
+offset_top = 0.219971
+offset_right = 24.0
+offset_bottom = 40.22
