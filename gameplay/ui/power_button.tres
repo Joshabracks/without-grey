@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://de5gnxbwn3bji"]
+
+[ext_resource type="Shader" path="res://gameplay/ui/power_button.gdshader" id="1_getke"]
+
+[resource]
+shader = ExtResource("1_getke")
+shader_parameter/offset = 0.0

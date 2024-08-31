@@ -28,4 +28,10 @@ func _process(_delta: float) -> void:
 	for platform: Platform in platform_container.get_children():
 		var player_block: bool = (player_controller.player_color == Global.CMY.CYAN && platform.cyan) || (player_controller.player_color == Global.CMY.MAGENTA && platform.magenta) || (player_controller.player_color == Global.CMY.YELLOW && platform.yellow)
 		platform.collision.disabled = !player_block
-
+	if $CharacterBody2D.powers["magenta"]:
+		$ToolTips/Control/PowerButtons/cyan.is_active = true
+		$ToolTips/Control/PowerButtons/magenta.is_active = true
+	if $CharacterBody2D.powers["yellow"]:
+		$ToolTips/Control/PowerButtons/yellow.is_active = true
+	if $PlayerController.max_jumps > 1:
+		$ToolTips/Control/PowerButtons/djump.is_active = true
