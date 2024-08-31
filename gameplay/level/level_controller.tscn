@@ -331,6 +331,7 @@ font_size = 24
 font_color = Color(0, 0.678431, 0.937255, 1)
 
 [node name="LevelController" type="Node" node_paths=PackedStringArray("platform_container", "player_controller")]
+process_mode = 3
 script = ExtResource("1_b1g1t")
 platform_container = NodePath("01")
 player_controller = NodePath("PlayerController")
