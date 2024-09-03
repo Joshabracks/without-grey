@@ -104,6 +104,7 @@ var end_color: Global.CMY = Global.CMY.CYAN
 
 func _physics_process(delta):
 	if player.powers.end:
+		Global.game_over = true
 		player_color = Global.CMY.WHITE
 		end_color += 1
 		if end_color > Global.CMY.YELLOW:

@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://c272jdd51xwk6"]
+
+[ext_resource type="Script" path="res://gameplay/powerup/powerup.gd" id="1_0mjuv"]
+[ext_resource type="Shader" path="res://gameplay/powerup/powerup.gdshader" id="2_bej8m"]
+[ext_resource type="Texture2D" uid="uid://dtmc7iuh8ahmw" path="res://gameplay/powerup/tex_swirl_0002_MK.jpg" id="3_2dq15"]
+[ext_resource type="Texture2D" uid="uid://cjudy7apxwy8e" path="res://gameplay/powerup/u9ybH.png" id="4_6d43t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osquw"]
+size = Vector2(39, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ccd8"]
+shader = ExtResource("2_bej8m")
+shader_parameter/time_scale = 1.0
+shader_parameter/color = 2
+shader_parameter/collect_timer = 0.0
+shader_parameter/noise = ExtResource("3_2dq15")
+shader_parameter/noise2 = ExtResource("4_6d43t")
+
+[node name="PowerYellow" type="Area2D"]
+position = Vector2(-816, 984)
+script = ExtResource("1_0mjuv")
+power_name = "yellow"
+color_index = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 21.22)
+shape = SubResource("RectangleShape2D_osquw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_2ccd8")
+offset_left = -16.0
+offset_top = 0.219971
+offset_right = 24.0
+offset_bottom = 40.22
