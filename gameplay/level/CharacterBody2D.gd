@@ -7,9 +7,9 @@ const is_player: bool = true
 
 var powers: Dictionary = {
 	"cyan": true,
-	"magenta": true,
-	"yellow": true,
-	"double-jump": true,
+	"magenta": false,
+	"yellow": false,
+	"double-jump": false,
 	"sprint": false,
 	"end": false
 }
